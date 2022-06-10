@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Department } from '../models/department.model';
+import { Employee } from '../models/employee.model';
 
 @Component({
   selector: 'app-create-employee',
@@ -10,6 +11,21 @@ import { Department } from '../models/department.model';
 export class CreateEmployeeComponent implements OnInit {
 
   previewPhoto = false;
+
+  employee: Employee = {
+    id: 0,
+    fullname: '',
+    gender: '',
+    email: '',
+    phoneNumber: 0,
+    contactPreference: '',
+    dateOfBirth: new Date(),
+    department: '',
+    isActive: false,
+    photoPath: '',
+  };
+  
+
   /* massiiv */
   departments: Department[] = [
     { id: 1, name: 'Help Desk'},
@@ -19,15 +35,15 @@ export class CreateEmployeeComponent implements OnInit {
     { id: 5, name: 'Admin'},
 
   ];
-    email: string;
+    /* email: string;
     fullName: string;
-    gender: boolean; /* :/ */
+    gender: boolean; / :/ /
     phoneNumber: string;
     contactPreference: boolean;
     isActive: boolean;
     department: number;
     dateOfBirth: Date;
-    photoPath: string;
+    photoPath: string; */
 
   constructor() {
 

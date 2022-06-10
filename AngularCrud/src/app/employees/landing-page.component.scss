@@ -1,0 +1,47 @@
+/*kujundus*/
+.imageClass {
+    width: 200px;
+    height: 200px;
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+body {
+  background-color: rgb(238, 237, 237);
+  color: white;
+  padding: 20px;
+  font-family: Arial, Verdana, sans-serif;
+  background-image: '..assets/images/taust.png';
+}
+
+h1 {
+  background-color:  rgba(22, 114, 114, 0.538);
+  padding: inherit;
+  -moz-box-shadow: 5px 5px 5px #777777;
+  -webkit-box-shadow: 5px 5px 5px #777777;
+  box-shadow: 5px 5px 5px #777777;
+}
+
+/* hex code */
+h2 {
+  background-color: rgba(51, 129, 145, 0.341);
+  padding: inherit;
+}
+h3 {
+  background-color: rgba(56, 166, 172, 0.16);
+  padding: inherit;
+}
+
+/* rgb code */
+p {
+  background-color: rgba(218, 226, 237, 0.17);
+  color: rgb(100,100,90);
+  padding: inherit;
+}
+
+.panel-footer {
+  background-color: rgb(238, 237, 237);
+}

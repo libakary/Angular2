@@ -7,20 +7,27 @@
         </div>
         <div class="panel-body">
 
-            <div class="form-group">
-                    <label for="fullName">Full Name</label>
-                    <input required id= "fullName" type="text" class="form-control"
-                    name="fullName" #fullNameControl="ngModel">
+            <div class="form-group" [class.has-error]="fullname.invalid 
+            && fullname.touched" [class.has-success]="fullname.valid">
+                <label for="fullname">Full Name</label>
+                <!--required teeb välja kohustuslikuks-->
+                <input required id= "fullname" type="text" class="form-control"
+                name="fullname" [(ngModel)]="employee.fullname" #fullname="ngModel">
+                <span class="help-block" *ngIf="fullname.invalid 
+                && fullname.touched"> <!--&& lisab 2 tingimust, et näitaks seda teksti-->
+                    Full Name is required
+                </span>
             </div>
+
             <div class="form-group">
                 <label for="email">Email</label>
                 <input id="email" type="text" class="form-control"
-                name="email" [(ngModel)]="email">
+                name="email" [(ngModel)]="employee.email">
             </div>
             <div class="form-group">
                 <label for="phoneNumber">Phone Number</label>
                 <input id="phoneNumber" type="text" class="form-control"
-                name="phoneNumber" [(ngModel)]="phoneNumber">
+                name="phoneNumber" [(ngModel)]="employee.phoneNumber">
             </div>
 
             <div class="form-group">
@@ -28,12 +35,12 @@
                 <div class="form-control">
                     <label class="radio-inline">
                         <input type="radio" value="email" name="contactPreference"
-                        [(ngModel)]="contactPreference">
+                        [(ngModel)]="employee.contactPreference">
                         Email
                     </label>
                     <label class="radio-inline">
                         <input type="radio" value="phone" name="contactPreference"
-                        [(ngModel)]="contactPreference">
+                        [(ngModel)]="employee.contactPreference">
                         Phone
                     </label>
                 </div>
@@ -44,12 +51,12 @@
                 <div class="form-control">
                     <label class="radio-inline">
                         <input type="radio" value="male" name="gender"
-                        [(ngModel)]="gender">
+                        [(ngModel)]="employee.gender">
                         Male
                     </label>
                     <label class="radio-inline">
                         <input type="radio" value="female" name="gender"
-                        [(ngModel)]="gender">
+                        [(ngModel)]="employee.gender">
                         Female
                     </label>
                 </div>
@@ -59,7 +66,7 @@
                 <div class="form-control">
                     <label class="checkbox-inline">
                         <input type="checkbox" name="isActive"
-                        [(ngModel)]="isActive">
+                        [(ngModel)]="employee.isActive">
                         Is Active
                     </label>
                 </div>
@@ -70,7 +77,7 @@
                     Department
                 </label>
                 <select name="department" id="department" type=""
-                [(ngModel)]="department" class="form-control">
+                [(ngModel)]="employee.department" class="form-control">
                 <!-- kirjutasime eraldi modeli nende jaoks juba
                 <option value="1">Help Desk</option>
                 <option value="2">HR</option>
@@ -86,13 +93,13 @@
             <div class="form-group">
                 <label for="dateOfBirth">Date of Birth</label>
                 <input id="dateOfBirth" type="date" class="form-control"
-                name="dateOfBirth" [(ngModel)]="dateOfBirth">
+                name="dateOfBirth" [(ngModel)]="employee.dateOfBirth">
             </div>
 
             <div class="form-group">
                 <label for="photoPath">Photo Path</label>
                 <input id="photoPath" type="text" class="form-control"
-                name="photoPath" [(ngModel)]="photoPath">
+                name="photoPath" [(ngModel)]="employee.photoPath">
             </div>
 
             <div class="form-group">
@@ -102,15 +109,31 @@
             </div>
 
             <div class="form-group">
-                <img [src]="photoPath" height="200" width="200" *ngIf="previewPhoto">
-
+                <img [src]="employee.photoPath" height="200" width="200" *ngIf="previewPhoto"/>
             </div>
 
         </div>
         <div class="panel-footer">
-            <button class="btn btn-primary" type="submit">Save</button>
+            <button class="btn btn-primary" type="submit" 
+            [disabled]="employeeForm.invalid">Save</button>
         </div>
     </div>
 </form>
 
 Angular generated Form Model: {{employeeForm.value | json}}
+
+<!-- <h2>Full Name Control</h2>
+<div>touched: {{fullNameControl.touched}}</div>
+<div>untouched: {{fullNameControl.untouched}}</div>
+<div>pristine: {{fullNameControl.pristine}}</div>
+<div>dirty: {{fullNameControl.dirty}}</div>
+<div>valid: {{fullNameControl.valid}}</div>
+<div>invalid: {{fullNameControl.invalid}}</div>
+
+<h2>Employee Form</h2>
+<div>touched: {{employeeForm.touched}}</div>
+<div>untouched: {{employeeForm.untouched}}</div>
+<div>pristine: {{employeeForm.pristine}}</div>
+<div>dirty: {{employeeForm.dirty}}</div>
+<div>valid: {{employeeForm.valid}}</div>
+<div>invalid: {{employeeForm.invalid}}</div> -->
